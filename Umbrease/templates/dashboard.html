@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umbrease Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header with logo and username -->
+        <header class="dashboard-header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Umbrease Logo">
+            </div>
+            <div class="user-info">
+                <span>Welcome, {{ username }}</span>
+            </div>
+        </header>
+
+        <!-- Main content area -->
+        <div class="dashboard-content">
+            <!-- User Profile Section -->
+            <section class="profile-section">
+                <h2>User Profile</h2>
+                <p>Username: {{ username }}</p>
+                <p>Available Umbrellas: {{ available_umbrellas }}</p>
+                
+                <h3>Rental History</h3>
+                <div class="rental-history">
+                    {% for rental in rental_history %}
+                        <div class="rental-item">
+                            <p>Umbrella ID: {{ rental.umbrella_id }}</p>
+                            <p>Rented on: {{ rental.rental_date }}</p>
+                            <p>Returned on: {{ rental.return_date }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <!-- Action Panel Section -->
+            <section class="action-panel">
+                <h2>Actions</h2>
+                <!-- Button to rent an umbrella -->
+                <button onclick="rentUmbrella()">Rent Umbrella</button>
+                <button onclick="returnUmbrella()">Return Umbrella</button>
+
+                <!-- Status message placeholder -->
+                <p id="status-message"></p> <!-- This will display success/error messages -->
+            </section>
+                <h3>Rental History</h3>
+                    <div class="rental-history">
+                        {% for rental in rental_history %}
+                    <div class="rental-item">
+            <p>Umbrella ID: {{ rental.umbrella_id }}</p>
+            <p>Rented on: {{ rental.rental_date }}</p>
+            <p>Due by: {{ rental.due_date }}</p>
+            <p>Returned on: {{ rental.return_date if rental.return_date else 'Not yet returned' }}</p>
+        </div>
+    {% endfor %}
+</div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>&copy; 2024 Umbrease. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for AJAX functionality -->
+    <script>
+        function rentUmbrella() {
+            fetch('/rent_umbrella', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'same-origin' // Ensures cookies are sent for session management
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display a success or error message to the user
+                document.getElementById('status-message').innerText = data.message;
+
+                // Optionally, reload the page to reflect the updated status
+                if (data.success) {
+                    setTimeout(() => window.location.reload(), 2000); // Refresh after 2 seconds
+                }
+            })
+            .catch(error => {
+                console.error('Error renting umbrella:', error);
+                document.getElementById('status-message').innerText = 'Error renting umbrella. Please try again.';
+            });
+        }
+
+        function returnUmbrella() {
+            fetch('/return_umbrella', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display a success or error message to the user
+                document.getElementById('status-message').innerText = data.message;
+
+                // Reload the page to reflect the updated status
+                if (data.success) {
+                    setTimeout(() => window.location.reload(), 2000); // Refresh after 2 seconds
+                }
+            })
+            .catch(error => {
+                console.error('Error returning umbrella:', error);
+                document.getElementById('status-message').innerText = 'Error returning umbrella. Please try again.';
+            });
+        }
+    </script>
+</body>
+</html>

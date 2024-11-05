@@ -1,0 +1,197 @@
+.flash-messages {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+/* Global settings for the body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #003366, #66a3ff); /* Dark blue to light blue gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Dashboard container styling */
+.dashboard-container {
+    width: 90%;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header styling */
+.dashboard-header {
+    background-color: #003366; /* Dark blue header */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+.user-info {
+    font-size: 1.2em;
+}
+
+/* Main content layout for profile and action panel */
+.dashboard-content {
+    padding: 2em;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+/* Profile section styling */
+.profile-section {
+    flex: 1;
+    background-color: #e6f0ff;
+    padding: 1.5em;
+    border-radius: 8px;
+}
+
+.profile-section h2 {
+    color: #003366;
+}
+
+.rental-history {
+    margin-top: 1em;
+    max-height: 200px;
+    overflow-y: auto;
+    border-top: 1px solid #ccc;
+    padding-top: 1em;
+}
+
+.rental-item {
+    background-color: #f0f7ff;
+    margin-bottom: 1em;
+    padding: 0.8em;
+    border-radius: 4px;
+}
+
+/* Action panel styling */
+.action-panel {
+    flex: 1;
+    background-color: #e6f0ff;
+    padding: 1.5em;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.action-panel h2 {
+    color: #003366;
+}
+
+.action-panel button {
+    width: 80%;
+    padding: 0.8em;
+    font-size: 1em;
+    margin: 0.5em 0;
+    background-color: #003366; /* Dark blue button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-panel button:hover {
+    background-color: #004080; /* Slightly lighter blue on hover */
+}
+
+/* Footer styling */
+.dashboard-footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #f0f7ff;
+    color: #555;
+}
+
+/* Styling for login and signup containers */
+.login-container,
+.signup-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    padding: 2em;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+/* Flash messages styling */
+.flash-messages {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+/* Headings and text formatting */
+h2 {
+    color: #003366; /* Dark blue color for headings */
+    font-size: 1.8em;
+    margin-bottom: 1em;
+}
+
+/* Form field styling for login and signup */
+form label {
+    display: block;
+    font-size: 1em;
+    color: #003366; /* Dark blue for labels */
+    margin-top: 1em;
+    text-align: left;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* Button styling for login and signup */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #003366; /* Dark blue button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 1em;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #004080; /* Slightly lighter blue on hover */
+}
+
+/* Link styling */
+p a {
+    color: #004080; /* Link color */
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

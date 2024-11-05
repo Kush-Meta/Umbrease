@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umbrease Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        // Redirect after a delay if registration is successful
+        function redirectToLogin() {
+            setTimeout(function() {
+                window.location.href = "{{ url_for('login') }}";
+            }, 1000);  // Redirect after 3 seconds
+        }
+    </script>
+</head>
+<body>
+    <div class="signup-container">
+        <!-- Logo at the top -->
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Umbrease Logo">
+        </div>
+        
+        <!-- Flash messages for success or error notifications -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Trigger redirect only if the message indicates successful registration -->
+                {% if "You have successfully registered" in messages[0] %}
+                    <script>redirectToLogin();</script>
+                {% endif %}
+            {% endif %}
+        {% endwith %}
+
+        <h2>Sign Up for Umbrease</h2>
+
+        <!-- Signup form -->
+        <form action="/signup" method="POST">
+            <label for="username">Username (must end with @emory.edu):</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+        
+        <p>Already have an account? <a href="{{ url_for('login') }}">Log in here</a>.</p>
+    </div>
+</body>
+</html>
